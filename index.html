@@ -1,1 +1,658 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .question {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .feedback {
+            display: none;
+            margin-top: 10px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+        .score {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Exam Questions</h2>
+    <form id="examForm" onsubmit="checkAnswers(event)">
+        <div class="question">
+            <p>Q1. A conducting loop moves perpendicular to magnetic field. Induced emf depends on:</p>
+            <div class="options">
+                <input type="radio" name="q1" value="a"> A) rate of change of flux<br>
+                <input type="radio" name="q1" value="b"> B) velocity only<br>
+                <input type="radio" name="q1" value="c"> C) resistance<br>
+                <input type="radio" name="q1" value="d"> D) area only<br>
+            </div>
+            <div class="feedback" id="q1Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q2. Kirchoff's 2nd law implies conservation of:</p>
+            <div class="options">
+                <input type="radio" name="q2" value="a"> A) Momentum<br>
+                <input type="radio" name="q2" value="b"> B) Mass<br>
+                <input type="radio" name="q2" value="c"> C) Energy<br>
+                <input type="radio" name="q2" value="d"> D) Charge<br>
+            </div>
+            <div class="feedback" id="q2Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q3. The magnetic field due to a long straight conductor is:</p>
+            <div class="options">
+                <input type="radio" name="q3" value="a"> A) Radial<br>
+                <input type="radio" name="q3" value="b"> B) Inverse<br>
+                <input type="radio" name="q3" value="c"> C) Circular around wire<br>
+                <input type="radio" name="q3" value="d"> D) Uniform<br>
+            </div>
+            <div class="feedback" id="q3Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q4. Which law states that current is directly proportional to voltage?</p>
+            <div class="options">
+                <input type="radio" name="q4" value="a"> A) Ohm's Law<br>
+                <input type="radio" name="q4" value="b"> B) Ampere's Law<br>
+                <input type="radio" name="q4" value="c"> C) Coulomb's Law<br>
+                <input type="radio" name="q4" value="d"> D) Faraday's Law<br>
+            </div>
+            <div class="feedback" id="q4Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q5. The value of g decreases with:</p>
+            <div class="options">
+                <input type="radio" name="q5" value="a"> A) Depth<br>
+                <input type="radio" name="q5" value="b"> B) Altitude<br>
+                <input type="radio" name="q5" value="c"> C) Equator distance<br>
+                <input type="radio" name="q5" value="d"> D) All of the above<br>
+            </div>
+            <div class="feedback" id="q5Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q6. Centripetal force acts:</p>
+            <div class="options">
+                <input type="radio" name="q6" value="a"> A) Tangent<br>
+                <input type="radio" name="q6" value="b"> B) Perpendicular to motion<br>
+                <input type="radio" name="q6" value="c"> C) Outward<br>
+                <input type="radio" name="q6" value="d"> D) Toward center<br>
+            </div>
+            <div class="feedback" id="q6Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q7. The unit of permittivity is:</p>
+            <div class="options">
+                <input type="radio" name="q7" value="a"> A) V/m<br>
+                <input type="radio" name="q7" value="b"> B) T/m^2<br>
+                <input type="radio" name="q7" value="c"> C) C^2/N.m^2<br>
+                <input type="radio" name="q7" value="d"> D) F/m<br>
+            </div>
+            <div class="feedback" id="q7Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q8. The dimensional formula of pressure is:</p>
+            <div class="options">
+                <input type="radio" name="q8" value="a"> A) M L^-1 T^-1<br>
+                <input type="radio" name="q8" value="b"> B) M L^-1 T^-2<br>
+                <input type="radio" name="q8" value="c"> C) M L T^-2<br>
+                <input type="radio" name="q8" value="d"> D) M L^-1<br>
+            </div>
+            <div class="feedback" id="q8Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q9. A bullet is fired horizontally and falls in 2 s. Distance it travels (v = 300 m/s):</p>
+            <div class="options">
+                <input type="radio" name="q9" value="a"> A) 300m<br>
+                <input type="radio" name="q9" value="b"> B) 600m<br>
+                <input type="radio" name="q9" value="c"> C) 150m<br>
+                <input type="radio" name="q9" value="d"> D) 900m<br>
+            </div>
+            <div class="feedback" id="q9Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q10. A body of mass m sliding down a rough incline at angle θ. Frictional force is:</p>
+            <div class="options">
+                <input type="radio" name="q10" value="a"> A) μmg sinθ<br>
+                <input type="radio" name="q10" value="b"> B) mg sinθ<br>
+                <input type="radio" name="q10" value="c"> C) μmg cosθ<br>
+                <input type="radio" name="q10" value="d"> D) mg<br>
+            </div>
+            <div class="feedback" id="q10Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q11. The gravitational potential energy of a system is always:</p>
+            <div class="options">
+                <input type="radio" name="q11" value="a"> A) Can't be determined<br>
+                <input type="radio" name="q11" value="b"> B) Positive<br>
+                <input type="radio" name="q11" value="c"> C) Zero<br>
+                <input type="radio" name="q11" value="d"> D) Negative<br>
+            </div>
+            <div class="feedback" id="q11Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q12. A 5 μF capacitor is charged to 10 V. Its energy is:</p>
+            <div class="options">
+                <input type="radio" name="q12" value="a"> A) 2.5×10^-4 J<br>
+                <input type="radio" name="q12" value="b"> B) 2.5×10^-3 J<br>
+                <input type="radio" name="q12" value="c"> C) 5×10^-4 J<br>
+                <input type="radio" name="q12" value="d"> D) 5×10^-3 J<br>
+            </div>
+            <div class="feedback" id="q12Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q13. The area under a force-time graph gives:</p>
+            <div class="options">
+                <input type="radio" name="q13" value="a"> A) Momentum<br>
+                <input type="radio" name="q13" value="b"> B) Impulse<br>
+                <input type="radio" name="q13" value="c"> C) Acceleration<br>
+                <input type="radio" name="q13" value="d"> D) Work<br>
+            </div>
+            <div class="feedback" id="q13Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q14. Magnetic field at center of circular coil of radius r carrying current:</p>
+            <div class="options">
+                <input type="radio" name="q14" value="a"> A) μ₀I/2r<br>
+                <input type="radio" name="q14" value="b"> B) μ₀I/r<br>
+                <input type="radio" name="q14" value="c"> C) μ₀I/r<br>
+                <input type="radio" name="q14" value="d"> D) μ₀I/4r<br>
+            </div>
+            <div class="feedback" id="q14Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q15. A heat engine absorbs 200 J and does 50 J of work. Efficiency is:</p>
+            <div class="options">
+                <input type="radio" name="q15" value="a"> A) 10%<br>
+                <input type="radio" name="q15" value="b"> B) 25%<br>
+                <input type="radio" name="q15" value="c"> C) 30%<br>
+                <input type="radio" name="q15" value="d"> D) 20%<br>
+            </div>
+            <div class="feedback" id="q15Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q16. What is the time constant of an RC circuit with R = 1kΩ, C = 1μF?</p>
+            <div class="options">
+                <input type="radio" name="q16" value="a"> A) 10ms<br>
+                <input type="radio" name="q16" value="b"> B) 1s<br>
+                <input type="radio" name="q16" value="c"> C) 0.1s<br>
+                <input type="radio" name="q16" value="d"> D) 1ms<br>
+            </div>
+            <div class="feedback" id="q16Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q17. A projectile launched with velocity of 50m/s at an angle of 30°. What is its range?</p>
+            <div class="options">
+                <input type="radio" name="q17" value="a"> A) 60m<br>
+                <input type="radio" name="q17" value="b"> B) 110m<br>
+                <input type="radio" name="q17" value="c"> C) 220m<br>
+                <input type="radio" name="q17" value="d"> D) 255m<br>
+            </div>
+            <div class="feedback" id="q17Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q18. The energy stored in a 2H inductor carrying 3A is:</p>
+            <div class="options">
+                <input type="radio" name="q18" value="a"> A) 9J<br>
+                <input type="radio" name="q18" value="b"> B) 3J<br>
+                <input type="radio" name="q18" value="c"> C) 1.5J<br>
+                <input type="radio" name="q18" value="d"> D) 6J<br>
+            </div>
+            <div class="feedback" id="q18Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q19. In banked road without friction, the banking angle is:</p>
+            <div class="options">
+                <input type="radio" name="q19" value="a"> A) v²/rg<br>
+                <input type="radio" name="q19" value="b"> B) tan⁻¹(v²/rg)<br>
+                <input type="radio" name="q19" value="c"> C) tan⁻¹(rg/v²)<br>
+                <input type="radio" name="q19" value="d"> D) sin⁻¹(v²/rg)<br>
+            </div>
+            <div class="feedback" id="q19Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q20. The angle between velocity and acceleration in uniform circular motion:</p>
+            <div class="options">
+                <input type="radio" name="q20" value="a"> A) 180°<br>
+                <input type="radio" name="q20" value="b"> B) 60°<br>
+                <input type="radio" name="q20" value="c"> C) 90°<br>
+                <input type="radio" name="q20" value="d"> D) 0°<br>
+            </div>
+            <div class="feedback" id="q20Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q21. Vector triple product is defined as:</p>
+            <div class="options">
+                <input type="radio" name="q21" value="a"> A) (A×B)×C<br>
+                <input type="radio" name="q21" value="b"> B) (A×B)×C<br>
+                <input type="radio" name="q21" value="c"> C) A×(B×C)<br>
+                <input type="radio" name="q21" value="d"> D) A×(B×C)<br>
+            </div>
+            <div class="feedback" id="q21Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q22. A 1kg object in free fall has velocity 20m/s. What is its kinetic energy?</p>
+            <div class="options">
+                <input type="radio" name="q22" value="a"> A) 200J<br>
+                <input type="radio" name="q22" value="b"> B) 100J<br>
+                <input type="radio" name="q22" value="c"> C) 300J<br>
+                <input type="radio" name="q22" value="d"> D) 400J<br>
+            </div>
+            <div class="feedback" id="q22Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q23. A capacitor is fully charged. The current in the circuit is:</p>
+            <div class="options">
+                <input type="radio" name="q23" value="a"> A) Infinite<br>
+                <input type="radio" name="q23" value="b"> B) Zero<br>
+                <input type="radio" name="q23" value="c"> C) Maximum<br>
+                <input type="radio" name="q23" value="d"> D) Constant<br>
+            </div>
+            <div class="feedback" id="q23Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q24. In SHM, amplitude=5cm and frequency=2Hz. What is max velocity?</p>
+            <div class="options">
+                <input type="radio" name="q24" value="a"> A) 0.6π m/s<br>
+                <input type="radio" name="q24" value="b"> B) 0.5π m/s<br>
+                <input type="radio" name="q24" value="c"> C) 0.1π m/s<br>
+                <input type="radio" name="q24" value="d"> D) 2π m/s<br>
+            </div>
+            <div class="feedback" id="q24Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q25. A transformer steps up voltage from 220V to 2200V. If primary current is 5A, secondary current is:</p>
+            <div class="options">
+                <input type="radio" name="q25" value="a"> A) 50A<br>
+                <input type="radio" name="q25" value="b"> B) 5A<br>
+                <input type="radio" name="q25" value="c"> C) 0.5A<br>
+                <input type="radio" name="q25" value="d"> D) 50A<br>
+            </div>
+            <div class="feedback" id="q25Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q26. Doppler effect does not occur when:</p>
+            <div class="options">
+                <input type="radio" name="q26" value="a"> A) Medium is moving<br>
+                <input type="radio" name="q26" value="b"> B) Observer moves with source<br>
+                <input type="radio" name="q26" value="c"> C) Both are stationary<br>
+                <input type="radio" name="q26" value="d"> D) Source is at rest<br>
+            </div>
+            <div class="feedback" id="q26Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q27. A particle moves such that its position vector is r(t)=1+2t+2t². What is the acceleration vector?</p>
+            <div class="options">
+                <input type="radio" name="q27" value="a"> A) 6i+2j<br>
+                <input type="radio" name="q27" value="b"> B) 2j<br>
+                <input type="radio" name="q27" value="c"> C) 6i-2j<br>
+                <input type="radio" name="q27" value="d"> D) 6i<br>
+            </div>
+            <div class="feedback" id="q27Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q28. A satellite in circular orbit has velocity V. If radius is halved, new velocity is:</p>
+            <div class="options">
+                <input type="radio" name="q28" value="a"> A) √2V<br>
+                <input type="radio" name="q28" value="b"> B) V/2<br>
+                <input type="radio" name="q28" value="c"> C) 2V<br>
+                <input type="radio" name="q28" value="d"> D) V/√2<br>
+            </div>
+            <div class="feedback" id="q28Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q29. A galvanometer is converted into an ammeter using:</p>
+            <div class="options">
+                <input type="radio" name="q29" value="a"> A) Inductor<br>
+                <input type="radio" name="q29" value="b"> B) Series resistor<br>
+                <input type="radio" name="q29" value="c"> C) Shunt<br>
+                <input type="radio" name="q29" value="d"> D) Capacitor<br>
+            </div>
+            <div class="feedback" id="q29Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q30. If electric field E=100N/C and area A=0.01m² perpendicular, electric flux is:</p>
+            <div class="options">
+                <input type="radio" name="q30" value="a"> A) 1<br>
+                <input type="radio" name="q30" value="b"> B) 1000<br>
+                <input type="radio" name="q30" value="c"> C) 0.1<br>
+                <input type="radio" name="q30" value="d"> D) 10<br>
+            </div>
+            <div class="feedback" id="q30Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q31. Newton's second law is not valid when:</p>
+            <div class="options">
+                <input type="radio" name="q31" value="a"> A) Speed is constant<br>
+                <input type="radio" name="q31" value="b"> B) Frame non-inertial<br>
+                <input type="radio" name="q31" value="c"> C) Acceleration is zero<br>
+                <input type="radio" name="q31" value="d"> D) Mass is zero<br>
+            </div>
+            <div class="feedback" id="q31Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q32. A uniform rod is balanced at its center. Weight is added to one side. The torque is:</p>
+            <div class="options">
+                <input type="radio" name="q32" value="a"> A) mgx<br>
+                <input type="radio" name="q32" value="b"> B) Zero<br>
+                <input type="radio" name="q32" value="c"> C) mgx/2<br>
+                <input type="radio" name="q32" value="d"> D) mg<br>
+            </div>
+            <div class="feedback" id="q32Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q33. Dimensional formula of power is:</p>
+            <div class="options">
+                <input type="radio" name="q33" value="a"> A) M L T^-3<br>
+                <input type="radio" name="q33" value="b"> B) M L^-2 T^-3<br>
+                <input type="radio" name="q33" value="c"> C) M L^2 T^-2<br>
+                <input type="radio" name="q33" value="d"> D) M L^-2 T^-3<br>
+            </div>
+            <div class="feedback" id="q33Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q34. Kirchoff's first law is based on conservation of:</p>
+            <div class="options">
+                <input type="radio" name="q34" value="a"> A) Mass<br>
+                <input type="radio" name="q34" value="b"> B) Charge<br>
+                <input type="radio" name="q34" value="c"> C) Energy<br>
+                <input type="radio" name="q34" value="d"> D) Momentum<br>
+            </div>
+            <div class="feedback" id="q34Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q35. Electric field is the negative gradient of:</p>
+            <div class="options">
+                <input type="radio" name="q35" value="a"> A) Current<br>
+                <input type="radio" name="q35" value="b"> B) Flux<br>
+                <input type="radio" name="q35" value="c"> C) Charge<br>
+                <input type="radio" name="q35" value="d"> D) Potential<br>
+            </div>
+            <div class="feedback" id="q35Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q36. If work done is W and kinetic energy is K, then:</p>
+            <div class="options">
+                <input type="radio" name="q36" value="a"> A) W = K<br>
+                <input type="radio" name="q36" value="b"> B) W = 1/2mv^2<br>
+                <input type="radio" name="q36" value="c"> C) W = Fd<br>
+                <input type="radio" name="q36" value="d"> D) W = -K<br>
+            </div>
+            <div class="feedback" id="q36Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q37. Which one of the following quantities is a scalar?</p>
+            <div class="options">
+                <input type="radio" name="q37" value="a"> A) Work<br>
+                <input type="radio" name="q37" value="b"> B) Acceleration<br>
+                <input type="radio" name="q37" value="c"> C) Velocity<br>
+                <input type="radio" name="q37" value="d"> D) Displacement<br>
+            </div>
+            <div class="feedback" id="q37Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q38. If a vector A=2i + j and B=1j, what is the angle between them?</p>
+            <div class="options">
+                <input type="radio" name="q38" value="a"> A) 60°<br>
+                <input type="radio" name="q38" value="b"> B) 45°<br>
+                <input type="radio" name="q38" value="c"> C) 103.1°<br>
+                <input type="radio" name="q38" value="d"> D) 90°<br>
+            </div>
+            <div class="feedback" id="q38Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q39. Lenz's Law is based on:</p>
+            <div class="options">
+                <input type="radio" name="q39" value="a"> A) Conservation of energy<br>
+                <input type="radio" name="q39" value="b"> B) Newton's law<br>
+                <input type="radio" name="q39" value="c"> C) Conservation of charge<br>
+                <input type="radio" name="q39" value="d"> D) Conservation of momentum<br>
+            </div>
+            <div class="feedback" id="q39Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q40. A galvanometer is converted into an ammeter using: A) Shunt B) Series resistor C) Capacitor D) Inductor</p>
+            <div class="options">
+                <input type="radio" name="q40" value="a"> A) Shunt<br>
+                <input type="radio" name="q40" value="b"> B) Inductor<br>
+                <input type="radio" name="q40" value="c"> C) Capacitor<br>
+                <input type="radio" name="q40" value="d"> D) Series resistor<br>
+            </div>
+            <div class="feedback" id="q40Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q41. A solid sphere rolls down without slipping. Its kinetic energy is:</p>
+            <div class="options">
+                <input type="radio" name="q41" value="a"> A) (2/5)mv^2<br>
+                <input type="radio" name="q41" value="b"> B) (1/2)mv^2<br>
+                <input type="radio" name="q41" value="c"> C) (7/10)mv^2<br>
+                <input type="radio" name="q41" value="d"> D) (5/7)mv^2<br>
+            </div>
+            <div class="feedback" id="q41Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q42. The angle between two vectors (X) is 90°. What is the magnitude of their resultant?</p>
+            <div class="options">
+                <input type="radio" name="q42" value="a"> A) ABcosX<br>
+                <input type="radio" name="q42" value="b"> B) Difference of magnitudes<br>
+                <input type="radio" name="q42" value="c"> C) Root of (A^2+B^2)<br>
+                <input type="radio" name="q42" value="d"> D) Sum of magnitudes<br>
+            </div>
+            <div class="feedback" id="q42Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q43. Which of the following has maximum magnetic dipole moment?</p>
+            <div class="options">
+                <input type="radio" name="q43" value="a"> A) Protons<br>
+                <input type="radio" name="q43" value="b"> B) Positrons<br>
+                <input type="radio" name="q43" value="c"> C) Neutrons<br>
+                <input type="radio" name="q43" value="d"> D) Electrons<br>
+            </div>
+            <div class="feedback" id="q43Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q44. In resonance, the impedance of an LC circuit is:</p>
+            <div class="options">
+                <input type="radio" name="q44" value="a"> A) Maximum<br>
+                <input type="radio" name="q44" value="b"> B) Zero<br>
+                <input type="radio" name="q44" value="c"> C) Infinite<br>
+                <input type="radio" name="q44" value="d"> D) Minimum<br>
+            </div>
+            <div class="feedback" id="q44Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q45. Which has higher resistance: 100 W or 60 W bulb (same voltage)?</p>
+            <div class="options">
+                <input type="radio" name="q45" value="a"> A) Can't say<br>
+                <input type="radio" name="q45" value="b"> B) Same<br>
+                <input type="radio" name="q45" value="c"> C) 60W<br>
+                <input type="radio" name="q45" value="d"> D) 100W<br>
+            </div>
+            <div class="feedback" id="q45Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q46. The unit of electric flux is:</p>
+            <div class="options">
+                <input type="radio" name="q46" value="a"> A) V/m<br>
+                <input type="radio" name="q46" value="b"> B) NM^2/C<br>
+                <input type="radio" name="q46" value="c"> C) C/m^2<br>
+                <input type="radio" name="q46" value="d"> D) N/C<br>
+            </div>
+            <div class="feedback" id="q46Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q47. In Bohr's model, angular momentum is:</p>
+            <div class="options">
+                <input type="radio" name="q47" value="a"> A) nh/2π<br>
+                <input type="radio" name="q47" value="b"> B) n2h/2π<br>
+                <input type="radio" name="q47" value="c"> C) h/n<br>
+                <input type="radio" name="q47" value="d"> D) 2πnh<br>
+            </div>
+            <div class="feedback" id="q47Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q48. In forced oscillation, resonance occurs when:</p>
+            <div class="options">
+                <input type="radio" name="q48" value="a"> A) Damping + driving force<br>
+                <input type="radio" name="q48" value="b"> B) Restoring force + friction<br>
+                <input type="radio" name="q48" value="c"> C) Driving frequency<br>
+                <input type="radio" name="q48" value="d"> D) Driving frequency = natural frequency<br>
+            </div>
+            <div class="feedback" id="q48Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q49. A wire of resistance R is stretched to double its length. New resistance?</p>
+            <div class="options">
+                <input type="radio" name="q49" value="a"> A) 4R<br>
+                <input type="radio" name="q49" value="b"> B) 2R<br>
+                <input type="radio" name="q49" value="c"> C) 3R<br>
+                <input type="radio" name="q49" value="d"> D) R<br>
+            </div>
+            <div class="feedback" id="q49Feedback"></div>
+        </div>
+
+        <div class="question">
+            <p>Q50. A ball is thrown upwards with 20m/s. Maximum height?</p>
+            <div class="options">
+                <input type="radio" name="q50" value="a"> A) 15m<br>
+                <input type="radio" name="q50" value="b"> B) 10m<br>
+                <input type="radio" name="q50" value="c"> C) 20m<br>
+                <input type="radio" name="q50" value="d"> D) 5m<br>
+            </div>
+            <div class="feedback" id="q50Feedback"></div>
+        </div>
+
+        <button type="submit">Submit Answers</button>
+    </form>
+    <div class="score" id="scoreDisplay"></div>
+
+    <script>
+        const answers = {
+            q1: 'a', q2: 'c', q3: 'c', q4: 'a', q5: 'd',
+            q6: 'd', q7: 'd', q8: 'b', q9: 'b', q10: 'c',
+            q11: 'd', q12: 'b', q13: 'b', q14: 'a', q15: 'b',
+            q16: 'd', q17: 'd', q18: 'a', q19: 'b', q20: 'c',
+            q21: 'c', q22: 'a', q23: 'b', q24: 'a', q25: 'c',
+            q26: 'c', q27: 'd', q28: 'a', q29: 'c', q30: 'd',
+            q31: 'b', q32: 'b', q33: 'a', q34: 'b', q35: 'd',
+            q36: 'a', q37: 'a', q38: 'c', q39: 'a', q40: 'a',
+            q41: 'c', q42: 'c', q43: 'd', q44: 'd', q45: 'c',
+            q46: 'b', q47: 'a', q48: 'd', q49: 'a', q50: 'c'
+        };
+
+        function checkAnswers(event) {
+            event.preventDefault();
+            let score = 0;
+
+            for (let q in answers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                let feedback = document.getElementById(`${q}Feedback`);
+                if (selected) {
+                    if (selected.value === answers[q]) {
+                        feedback.innerHTML = '<span class="correct">Correct!</span>';
+                        score++;
+                    } else {
+                        feedback.innerHTML = `<span class="incorrect">Incorrect. Correct Answer: ${getCorrectOption(q)}</span>`;
+                    }
+                } else {
+                    feedback.innerHTML = `<span class="incorrect">Not answered. Correct Answer: ${getCorrectOption(q)}</span>`;
+                }
+                feedback.style.display = 'block';
+            }
+
+            // Calculate and display score
+            const totalQuestions = Object.keys(answers).length;
+            const percentage = ((score / totalQuestions) * 100).toFixed(2);
+            document.getElementById('scoreDisplay').innerHTML = `Total Marks: ${score} out of ${totalQuestions}<br>Percentage: ${percentage}%`;
+        }
+
+        function getCorrectOption(q) {
+            const options = {
+                a: 'A', b: 'B', c: 'C', d: 'D'
+            };
+            return options[answers[q]];
+        }
+    </script>
+</body>
+</html>
